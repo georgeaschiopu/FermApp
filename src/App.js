@@ -1,26 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
+import Login from './Login';
 
 function App() {
+  const [user, setUser] = useState(null);
+
+  const handleLogin = (userData) => {
+    setUser(userData);
+  };
+
+  if (!user) {
+    return <Login onLogin={handleLogin} />;
+  }
+
   return (
     <div style={{ maxWidth: '600px', margin: '40px auto', fontFamily: 'Arial, sans-serif' }}>
       <header>
         <h1>Welcome to Farmers-Customers Platform</h1>
-        <p>Connecting farmers directly with customers for fresh and sustainable produce.</p>
+        <p>Hello, {user.email} ({user.role})! You are logged in.</p>
       </header>
-      <main>
-        <section>
-          <h2>Features</h2>
-          <ul>
-            <li>Browse and adopt crops or livestock</li>
-            <li>Subscribe to weekly produce boxes</li>
-            <li>Track your orders transparently</li>
-            <li>Real-time farm updates and notifications</li>
-          </ul>
-        </section>
-      </main>
-      <footer style={{ marginTop: '40px', fontSize: '0.9em', color: '#555'}}>
-        <p>© 2025 Farmers Platform. All rights reserved.</p>
-      </footer>
+      {/* Add more features or navigation here */}
     </div>
   );
 }
